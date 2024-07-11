@@ -14,7 +14,8 @@ body {
 .card {
   background-image: url("./YuGiOh.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center center;
 }
 .card,
 .card-tilt-js {
