@@ -13,6 +13,10 @@ card.addEventListener("mouseenter", cardMouseEnter);
 card.addEventListener("mousemove", cardMouseMove);
 card.addEventListener("mouseleave", cardMouseLeave);
 
+card.addEventListener("touchstart", cardMouseEnter);
+card.addEventListener("touchmove", cardMouseMove);
+card.addEventListener("touchend", cardMouseLeave);
+
 function cardMouseEnter(event) {
   setTransition();
   setshinyTransition();
