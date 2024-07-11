@@ -71,37 +71,41 @@ function cardMouseMove(event) {
 }
 
 function cardtouchMove(event) {
-  const cardWidth = card.offsetWidth;
-  const cardHeight = card.offsetHeight;
-  const centerX = card.offsetLeft + cardWidth / 2;
-  const centerY = card.offsetTop + cardHeight / 2;
-  const mouseX = touch.radiusX - centerX;
-  const mouseY = touch.radiusY - centerY;
-  const rotateXUncapped =
-    +1 * ((tiltEffectSettings.max * mouseY) / (cardHeight / 2));
-  const rotateYUncapped =
-    -1 * ((tiltEffectSettings.max * mouseX) / (cardWidth / 2));
-  const rotateX =
-    rotateXUncapped < -tiltEffectSettings.max
-      ? -tiltEffectSettings.max
-      : rotateXUncapped > tiltEffectSettings.max
-      ? tiltEffectSettings.max
-      : rotateXUncapped;
-  const rotateY =
-    rotateYUncapped < -tiltEffectSettings.max
-      ? -tiltEffectSettings.max
-      : rotateYUncapped > tiltEffectSettings.max
-      ? tiltEffectSettings.max
-      : rotateYUncapped;
+  event.preventDefault();
+  try {
+    // let x = e.touches[0].clientX;
+    // console.log(x);
+    const cardWidth = card.offsetWidth;
+    const cardHeight = card.offsetHeight;
+    const centerX = card.offsetLeft + cardWidth / 2;
+    const centerY = card.offsetTop + cardHeight / 2;
+    const mouseX = event.touches[0].clientX - centerX;
+    const mouseY = event.touches[0].clientY - centerY;
+    const rotateXUncapped =
+      +1 * ((tiltEffectSettings.max * mouseY) / (cardHeight / 2));
+    const rotateYUncapped =
+      -1 * ((tiltEffectSettings.max * mouseX) / (cardWidth / 2));
+    const rotateX =
+      rotateXUncapped < -tiltEffectSettings.max
+        ? -tiltEffectSettings.max
+        : rotateXUncapped > tiltEffectSettings.max
+        ? tiltEffectSettings.max
+        : rotateXUncapped;
+    const rotateY =
+      rotateYUncapped < -tiltEffectSettings.max
+        ? -tiltEffectSettings.max
+        : rotateYUncapped > tiltEffectSettings.max
+        ? tiltEffectSettings.max
+        : rotateYUncapped;
 
-  let arad = Math.atan2(mouseY, mouseX);
-  let angle = (arad * 180) / Math.PI - 90;
+    let arad = Math.atan2(mouseY, mouseX);
+    let angle = (arad * 180) / Math.PI - 90;
 
-  if (angle < 0) {
-    angle = angle + 360;
-  }
-  shiny.style.opacity = `1`;
-  shiny.style.background = `linear-gradient(
+    if (angle < 0) {
+      angle = angle + 360;
+    }
+    shiny.style.opacity = `1`;
+    shiny.style.background = `linear-gradient(
     ${angle}deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 173, 6, 0.22461484593837533) 32%,
@@ -114,8 +118,11 @@ function cardtouchMove(event) {
     rgba(255, 255, 255, 0.4) 100%
   )`;
 
-  card.style.transform = `perspective(${tiltEffectSettings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) 
+    card.style.transform = `perspective(${tiltEffectSettings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) 
                             scale3d(${tiltEffectSettings.scale}, ${tiltEffectSettings.scale}, ${tiltEffectSettings.scale})`;
+  } catch (err) {
+    return;
+  }
 }
 
 function cardMouseLeave(event) {
