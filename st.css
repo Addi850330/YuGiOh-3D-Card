@@ -27,9 +27,8 @@ body {
   /* backface-visibility: hidden; */
 }
 .cardhide {
-  /* opacity: 0;
-  pointer-events: none; */
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .card .shiny {
@@ -85,7 +84,7 @@ body {
   z-index: 0;
 }
 .thecardhide {
-  display: none;
+  visibility: hidden;
 }
 .thecardturnback {
   transform: rotateY(180deg);
