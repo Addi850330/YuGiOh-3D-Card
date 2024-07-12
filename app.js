@@ -330,13 +330,17 @@ function b() {
   thecard.classList.toggle("thecardhide");
 }
 //----mobileset----
-// thefront.addEventListener("touchstart", showcard);
-// theback.addEventListener("touchstart", b);
+thefront.addEventListener("touchstart", showcard);
+theback.addEventListener("touchstart", showbccard);
 
-// function showcard() {
-//   card.classList.remove("cardhide");
-//   thecard.classList.add("thecardhide");
-// }
+function showcard() {
+  card.classList.remove("cardhide");
+  thecard.classList.add("thecardhide");
+}
+function showbccard() {
+  card.classList.remove("bccardhide");
+  thecard.classList.add("thecardhide");
+}
 function hidecard() {
   card.classList.add("cardhide");
   thecard.classList.remove("thecardhide");
