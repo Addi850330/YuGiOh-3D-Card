@@ -338,7 +338,7 @@ function showcard() {
   thecard.classList.add("thecardhide");
 }
 function showbccard() {
-  card.classList.remove("bccardhide");
+  bccard.classList.remove("bccardhide");
   thecard.classList.add("thecardhide");
 }
 function hidecard() {
@@ -346,6 +346,6 @@ function hidecard() {
   thecard.classList.remove("thecardhide");
 }
 function hidebccard() {
-  card.classList.add("bccardhide");
+  bccard.classList.add("bccardhide");
   thecard.classList.remove("bcthecardhide");
 }
