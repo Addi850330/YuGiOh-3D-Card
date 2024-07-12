@@ -27,8 +27,9 @@ body {
   /* backface-visibility: hidden; */
 }
 .cardhide {
-  opacity: 0;
-  pointer-events: none;
+  /* opacity: 0;
+  pointer-events: none; */
+  display: none;
 }
 
 .card .shiny {
@@ -69,9 +70,10 @@ body {
   border-radius: 10px;
   border: 0;
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 5;
 }
 .thecard {
   position: absolute;

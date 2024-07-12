@@ -13,22 +13,16 @@ card.addEventListener("mouseenter", cardMouseEnter);
 card.addEventListener("mousemove", cardMouseMove);
 card.addEventListener("mouseleave", cardMouseLeave);
 // ---mobile---
-card.addEventListener("touchstart", cardMouseEnter, showcard);
+card.addEventListener("touchstart", cardMouseEnter);
 card.addEventListener("touchmove", cardtouchMove);
-card.addEventListener("touchend", cardMouseLeave, hidecard);
+card.addEventListener("touchend", cardMouseLeave);
 
 function cardMouseEnter(event) {
+  event.preventDefault();
   setTransition();
   setshinyTransition();
 }
-function showcard() {
-  card.classList.toggle("cardhide");
-  thecard.classList.toggle("thecardhide");
-}
-function hidecard() {
-  card.classList.toggle("cardhide");
-  thecard.classList.toggle("thecardhide");
-}
+
 function cardMouseMove(event) {
   const cardWidth = card.offsetWidth;
   const cardHeight = card.offsetHeight;
@@ -164,22 +158,22 @@ bccard.addEventListener("mouseenter", bccardMouseEnter);
 bccard.addEventListener("mousemove", bccardMouseMove);
 bccard.addEventListener("mouseleave", bccardMouseLeave);
 // ---mobile---
-bccard.addEventListener("touchstart", bccardMouseEnter, showbccard);
+bccard.addEventListener("touchstart", bccardMouseEnter);
 bccard.addEventListener("touchmove", bccardtouchMove);
-bccard.addEventListener("touchend", bccardMouseLeave, hidebccard);
+bccard.addEventListener("touchend", bccardMouseLeave);
 
 function bccardMouseEnter(event) {
   bcsetTransition();
   bcsetshinyTransition();
 }
-function showbccard() {
-  card.classList.toggle("bccardhide");
-  thecard.classList.toggle("thecardhide");
-}
-function hidebccard() {
-  card.classList.toggle("bccardhide");
-  thecard.classList.toggle("thecardhide");
-}
+// function showbccard() {
+//   card.classList.toggle("bccardhide");
+//   thecard.classList.toggle("thecardhide");
+// }
+// function hidebccard() {
+//   card.classList.toggle("bccardhide");
+//   thecard.classList.toggle("thecardhide");
+// }
 function bccardMouseMove(event) {
   const cardWidth = bccard.offsetWidth;
   const cardHeight = bccard.offsetHeight;
@@ -294,15 +288,15 @@ function bccardMouseLeave(event) {
 
 function bcsetTransition() {
   clearTimeout(card.transitionTimeoutId);
-  card.style.transition = `transform ${tiltEffectSettings.speed}ms ${tiltEffectSettings.easing}`;
-  card.transitionTimeoutId = setTimeout(() => {
+  bccard.style.transition = `transform ${tiltEffectSettings.speed}ms ${tiltEffectSettings.easing}`;
+  bccard.transitionTimeoutId = setTimeout(() => {
     card.style.transition = "";
   }, tiltEffectSettings.speed);
 }
 
 function bcsetshinyTransition() {
-  shiny.style.transition = `.4s`;
-  shiny.transitionTimeoutId = setTimeout(() => {
+  bcshiny.style.transition = `.4s`;
+  bcshiny.transitionTimeoutId = setTimeout(() => {
     shiny.style.transition = "";
   }, tiltEffectSettings.speed);
 }
@@ -323,16 +317,16 @@ function cardreturn() {
 
 thefront.addEventListener("mouseenter", f);
 theback.addEventListener("mouseenter", b);
+//----mobileset----
+thefront.addEventListener("touchstart", f);
+theback.addEventListener("touchstart", b);
 
-// mouseleave
 function f() {
   card.classList.toggle("cardhide");
   thecard.classList.toggle("thecardhide");
 }
+
 function b() {
   bccard.classList.toggle("bccardhide");
   thecard.classList.toggle("thecardhide");
 }
-// function b() {
-//   console.log("bbbbb");
-// }
