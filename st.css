@@ -85,6 +85,7 @@ body {
 }
 .thecardhide {
   visibility: hidden;
+  transition: none;
 }
 .thecardturnback {
   transform: rotateY(180deg);
